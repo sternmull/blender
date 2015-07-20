@@ -1025,7 +1025,8 @@ typedef struct Sculpt {
 	float pad;
 
 	struct Object *gravity_object;
-	void *pad2;
+	float tile_offset[3];
+	int pad2;
 } Sculpt;
 
 typedef struct UvSculpt {
@@ -1857,6 +1858,10 @@ typedef enum SculptFlags {
 	/* If set, dynamic-topology detail size will be constant in object space */
 	SCULPT_DYNTOPO_DETAIL_CONSTANT = (1 << 13),
 	SCULPT_DYNTOPO_DETAIL_BRUSH = (1 << 14),
+
+	SCULPT_TILE_X = (1 << 15),
+	SCULPT_TILE_Y = (1 << 16),
+	SCULPT_TILE_Z = (1 << 17),
 } SculptFlags;
 
 typedef enum ImagePaintMode {

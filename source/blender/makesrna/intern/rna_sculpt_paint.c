@@ -568,6 +568,29 @@ static void rna_def_sculpt(BlenderRNA  *brna)
 	RNA_def_property_flag(prop, PROP_EDITABLE);
 	RNA_def_property_ui_text(prop, "Orientation", "Object whose Z axis defines orientation of gravity");
 	RNA_def_property_update(prop, NC_SCENE | ND_TOOLSETTINGS, NULL);
+
+	prop = RNA_def_property(srna, "tile_offset", PROP_FLOAT, PROP_XYZ);
+	RNA_def_property_float_sdna(prop, NULL, "tile_offset");
+	RNA_def_property_array(prop, 3);
+	RNA_def_property_range(prop, 0.01, FLT_MAX);
+	RNA_def_property_ui_range(prop, 0.01, 100, 1 * 100, 2);
+	RNA_def_property_ui_text(prop, "Tiling offset for the X Axis",
+	                         "Stride at which tiled strokes are copied");
+
+	prop = RNA_def_property(srna, "tile_x", PROP_BOOLEAN, PROP_NONE);
+	RNA_def_property_boolean_sdna(prop, NULL, "flags", SCULPT_TILE_X);
+	RNA_def_property_ui_text(prop, "Tile X", "Tile along X axis");
+	RNA_def_property_update(prop, NC_SCENE | ND_TOOLSETTINGS, NULL);
+
+	prop = RNA_def_property(srna, "tile_y", PROP_BOOLEAN, PROP_NONE);
+	RNA_def_property_boolean_sdna(prop, NULL, "flags", SCULPT_TILE_Y);
+	RNA_def_property_ui_text(prop, "Tile Y", "Tile along Y axis");
+	RNA_def_property_update(prop, NC_SCENE | ND_TOOLSETTINGS, NULL);
+
+	prop = RNA_def_property(srna, "tile_z", PROP_BOOLEAN, PROP_NONE);
+	RNA_def_property_boolean_sdna(prop, NULL, "flags", SCULPT_TILE_Z);
+	RNA_def_property_ui_text(prop, "Tile Z", "Tile along Z axis");
+	RNA_def_property_update(prop, NC_SCENE | ND_TOOLSETTINGS, NULL);
 }
 
 
